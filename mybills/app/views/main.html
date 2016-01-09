@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 class="container-fluid">My Bills</h2>
+  <hr />
+  <ul class="thumbnails">
+    <li ng-repeat="bill in bills">
+      <div class="row session">
+
+      </div>
+      <div class="well span9">
+          <h4 class="well-title">{{bill.billname}}</h4>
+          <h6 style="margin-top:-10px">{{bill.amount}}</h6>
+          <span>Day Bill is Due on: {{bill.dueDates}}</span><br />
+      </div>
+    </li>
+  </ul>
+</div>
