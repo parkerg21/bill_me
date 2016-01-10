@@ -12,7 +12,7 @@ angular.module('mybillsApp')
     $scope.bills = [
       {
         "billname": "Rent",
-        "amount": 1440,
+        "amount": "1440",
         "dueDates": 1,
         "paid": "n"
       },
@@ -154,5 +154,42 @@ angular.module('mybillsApp')
         "dueDates": 28,
         "paid": "n"
       }
-    ]
+    ],
+      $scope.removeItem = function(index) {
+        $scope.bills.splice(index, 1);
+      },
+
+      $scope.total = function() {
+      var total = 0;
+      angular.forEach($scope.bills, function(bill) {
+        total += bill.amount;
+        total = Math.round(total * 100)/100
+      })
+
+      return total;
+    },
+      $scope.totalAfterBills = function() {
+        var total = 0;
+        angular.forEach($scope.bills, function(bill) {
+          total += bill.amount;
+          total = 2800 - (Math.round(total * 100)/100)
+        })
+
+        return total;
+      },
+      $scope.showBill=[];
+      $scope.toggleBill = function(index,bills){
+           console.log(bills[index].paid);
+          if (bills[index].paid === 'n'){
+            bills[index].paid = "y";
+            $scope.showBill[index] = !$scope.showBill[index];
+            local
+            $scope.bills.splice(index, 1);
+            console.log(bills[index].paid);
+          }
+      }
+
+
+
+
   });

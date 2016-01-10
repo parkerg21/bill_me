@@ -164,11 +164,19 @@ body {
     border-bottom: 0;
   }
 }
-html body {
+/*html body {
    background-color: rgba(0,0,0,1.00);
 
- }
+ }*/
 .well {
   background-color: rgba(0,0,0,1.00);
   color:white;
+}
+
+html h2 {
+  color:black;
+}
+.btn-primary {
+//.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
+.buttonBackground(red, white);
 }
