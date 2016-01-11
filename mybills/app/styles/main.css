@@ -176,7 +176,7 @@ body {
 html h2 {
   color:black;
 }
-.btn-primary {
+/*.btn-primary {
 //.buttonBackground(@btnBackground, @btnBackgroundHighlight, @grayDark, 0 1px 1px rgba(255,255,255,.75));
 .buttonBackground(red, white);
-}
+}*/
