@@ -11,7 +11,7 @@ angular
     'firebase'
   ])
 
-  .run(['$rootScope', '$location', 'authProvider', function ($rootScope, $location,     authProvider) {
+  .run(['$rootScope', '$location', 'authProvider', function ($rootScope, $location,authProvider) {
     $rootScope.$on('$routeChangeStart', function (event) {
 
       if (!authProvider.isLoggedIn()) {
@@ -41,10 +41,19 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/billDetails', {
+        templateUrl: 'views/billDetails.html',
+        controller: 'DetailsCtrl',
+        controllerAs: 'details'
+      })
       .when('/currentBills', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
+      })
+      .when('/logout', {
+        
+        redirectTo: '/login'
       })
       .otherwise({
         redirectTo: '/'
