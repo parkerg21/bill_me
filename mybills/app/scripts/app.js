@@ -11,12 +11,13 @@ angular
     'firebase'
   ])
 
-  .run(['$rootScope', '$cookieStore','$location', 'authProvider', function ($rootScope, $cookieStore,$location,authProvider) {
+ /* .run(['$rootScope', '$route','$cookieStore','$location', 'authProvider', function ($rootScope,$route,$cookieStore,$location,authProvider) {
     $rootScope.$on('$routeChangeStart', function (event) {
 
       $rootScope.globals = $cookieStore.get('globals') || {};
       console.log($rootScope.globals)
       if (!$rootScope.authentication) {
+        console.log('LOC: ' + $location.url());
         console.log('DENY : Redirecting to Login');
         $location.path('/login');
       }
@@ -24,7 +25,7 @@ angular
         console.log('ALLOW');
       }
     });
-  }])
+  }])*/
 
   .config(function ($routeProvider) {
     $routeProvider
@@ -51,6 +52,11 @@ angular
       .when('/logout', {
         controller: 'AuthCtrl',
         redirectTo: '/'
+      })
+      .when('/register', {
+        templateUrl: 'views/register.html',
+        controller: 'RegisterCtrl',
+        controllerAs: 'register'
       })
       .otherwise({
         redirectTo: '/'

@@ -22,7 +22,7 @@ angular.module('mybillsApp')
       }).then(function(result){
         $rootScope.authentication = true;
         console.log($rootScope.authentication);
-          $location.path('/currentBills',false);
+          $location.path('/',false);
       });
     };
 

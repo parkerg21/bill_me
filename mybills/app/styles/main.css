@@ -88,9 +88,6 @@ select, textarea {
   padding: 0.2em 0;
 }
 
-body {
-  padding: 0;
-}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -142,11 +139,11 @@ body {
   margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
+/* Responsive: Portrait tablets and up
 @media screen and (min-width: 768px) {
   .container {
     max-width: 730px;
-  }
+  } */
 
   /* Remove the padding we set earlier */
   .header,
@@ -163,7 +160,7 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
-}
+
 /*html body {
    background-color: rgba(0,0,0,1.00);
 
@@ -189,3 +186,13 @@ html h2 {
   text-decoration: line-through;
   color: grey;
 }
+
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
