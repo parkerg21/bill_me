@@ -25,8 +25,9 @@
     </tfoot>
     <tbody>
       <tr ng-repeat="bill in bills" ng-show="!showBill[$index]">
-        <td><button class="btn-primary" type="button" ng-click="toggleBill($index,bills)">Pay Bill &#10004;</button></td>
-        <td><h4>{{bill.billname}}</h4></td>
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+        <td><input type="checkbox" ng-model="bill[index].done" ng-click="toggleBill($index,bills)"/></td>
+        <td><h4 class="done-{{bill[index].done}}">{{bill.billname}}</h4></td>
         <td><h4>{{bill.amount | currency:"$"}}</h4></td>
         <td><h4><span>{{bill.dueDates | date:'MM/dd/yyyy'}}</span></h4></td>
         <td align="center">

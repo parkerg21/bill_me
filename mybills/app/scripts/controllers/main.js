@@ -38,10 +38,11 @@ angular.module('mybillsApp','')
            console.log(bills[index].paid);
           if (bills[index].paid === 'n'){
             bills[index].paid = "y";
-            $scope.showBill[index] = !$scope.showBill[index];
-            local
-            $scope.bills.splice(index, 1);
+            bills[index].done = !bills[index].done;
+            /*$scope.showBill[index] = !$scope.showBill[index];*/
             console.log(bills[index].paid);
+            $scope.tempBills = bills;
+
           }
       }
 
