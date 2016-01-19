@@ -31,13 +31,11 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/home.html',
-        controller: 'AuthCtrl',
-        controllerAs: 'auth'
+        controller: 'AuthorizationController',
       })
       .when('/login', {
         templateUrl: 'views/login.html',
-        controller: 'AuthCtrl',
-        controllerAs: 'auth'
+        controller: 'AuthorizationController',
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -55,8 +53,7 @@ angular
       })
       .when('/register', {
         templateUrl: 'views/register.html',
-        controller: 'RegisterCtrl',
-        controllerAs: 'register'
+        controller: 'RegisterController',
       })
       .otherwise({
         redirectTo: '/'
