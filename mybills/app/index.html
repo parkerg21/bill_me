@@ -22,7 +22,7 @@
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
 
-<body ng-app="mybillsApp" style>
+<body ng-app="mybillsApp" ng-controller="LoginController">
 
 <!-- Navigation -->
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
@@ -35,15 +35,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand topnav" href="#/">Bill Me</a>
+        <a class="navbar-brand topnav" ui-sref="home">Bill Me</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#/">Home</a></li>
-          <li><a href="#/currentBills">Current Bills</a></li>
-          <li ng-show="!authentication"><a  href="#/login">Login</a></li>
-          <li ng-show="authentication"><a  href="#/logout" ng-click="logout()">Logout</a></li>
+          <li><a ui-sref="home">Home</a></li>
+          <li><a ui-sref="currentBills">Current Bills</a></li>
+          <li ng-show="!authentication"><a  ui-sref="login">Login</a></li>
+          <li ng-show="authentication"><a ui-sref="home" ng-click="logout()">Logout</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -52,7 +52,7 @@
   </nav>
 <!--Views go here  -->
   <div class="container">
-    <div ng-view=""></div>
+    <div ui-view></div>
   </div>
 
   <footer>
@@ -60,10 +60,10 @@
       <div class="row">
         <div class="col-lg-12">
           <ul class="list-inline">
-            <li><a href="#">Home</a></li>
-            <li><a href="#/currentBills">Current Bills</a></li>
-            <li ng-show="!authentication"><a  href="#/login">Login</a></li>
-            <li ng-show="authentication"><a  href="#/logout" ng-click="logout()">Logout</a></li>
+            <li><a ui-sref="home">Home</a></li>
+            <li><a ui-sref="currentBills">Current Bills</a></li>
+            <li ng-show="!authentication"><a  ui-sref="login">Login</a></li>
+            <li ng-show="authentication"><a  ui-sref="logout" ng-click="logout()">Logout</a></li>
           </ul>
           <p class="copyright text-muted small">Copyright &copy; PTG 2016. All Rights Reserved</p>
         </div>
@@ -91,18 +91,18 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
-<script src="scripts/controllers/about.js"></script>
+<script src="scripts/app.route.js"></script>
+<script src="scripts/controllers/billController.js"></script>
+<script src="scripts/controllers/aboutController.js"></script>
 <script src="scripts/controllers/authorizationController.js"></script>
 <script src="scripts/controllers/registerController.js"></script>
+<script src="scripts/controllers/loginController.js"></script>
 <script src="scripts/services/authorizationService.js"></script>
 <script src="scripts/services/registerService.js"></script>
 <script src="scripts/services/baseService.js"></script>

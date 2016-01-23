@@ -14,10 +14,11 @@
     $scope.login = login;
 
     function login() {
-      AuthorizationService.login($scope.auth).then(function(result){
+      AuthorizationService.login($scope.auth).then(function(user){
+        console.log("made it to authorization controller");
         $rootScope.authentication = true;
-        $log.debug($rootScope.authentication);
-        $location.path('/',false);
+        $scope.user = user;
+        $state.go('currentBills');
       }, function(error) {
         console.log("Error display: " + error);
         $scope.error = error;

@@ -8,7 +8,7 @@
  * Controller of the mybillsApp
  */
 angular.module('mybillsApp','')
-  .controller('MainCtrl', ["$scope", "$firebaseArray",function ($scope,$firebaseArray) {
+  .controller('BillController', ["$scope", "$firebaseArray",function ($scope,$firebaseArray) {
     var ref = new Firebase("https://popping-heat-8894.firebaseio.com/bills");
     $scope.bills = $firebaseArray(ref);
       $scope.removeItem = function(index) {

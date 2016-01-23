@@ -1,1 +1,39 @@
-<p>Under Maintenance.</p>
+<div ng-cloak="" >
+  <h2>Current Bills</h2>
+  <hr />
+  <table class="table table-striped table-hover">
+    <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Amount</th>
+      <th>Due Date</th>
+      <th>Remove</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+      <td></td>
+      <td align="right" ><h4><b>Total:</b></h4></td>
+      <td><h4><b>{{total() | currency:undefined:0}}</b></h4></td>
+    <tr>
+      <td></td>
+      <td align="right" ><h4><b>After Bills:</b></h4></td>
+      <td><h4><b>{{totalAfterBills() | currency:undefined:0}}</b></h4></td>
+    </tr>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr ng-repeat="bill in bills" ng-show="!showBill[$index]">
+      <span class="done-{{todo.done}}">{{todo.text}}</span>
+      <td><input type="checkbox" ng-model="bill[index].done" ng-click="toggleBill($index,bills)"/></td>
+      <td><h4 class="done-{{bill[index].done}}">{{bill.billname}}</h4></td>
+      <td><h4>{{bill.amount | currency:"$"}}</h4></td>
+      <td><h4><span>{{bill.dueDates | date:'MM/dd/yyyy'}}</span></h4></td>
+      <td align="center">
+        <a class="badge" href ng:click="removeItem($index)">X</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

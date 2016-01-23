@@ -8,7 +8,7 @@
  * Controller of the mybillsApp
  */
 angular.module('mybillsApp')
-  .controller('AboutCtrl', function () {
+  .controller('BillDetailsController', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

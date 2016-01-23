@@ -1,63 +1,18 @@
-'use strict';
+(function() {
+  'use strict';
+  angular
+    .module('mybillsApp', ['ui.router', 'ngAnimate','ngCookies','ngResource','ngSanitize','ngTouch', 'firebase'])
 
-angular
-  .module('mybillsApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'firebase'
-  ])
+    .run(["$rootScope", "$location", function($rootScope, $location) {
+      $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+        // We can catch the error thrown when the $requireAuth promise is rejected
+        // and redirect the user back to the home page
+        if (error === "AUTH_REQUIRED") {
+          $location.path("/");
+        }
+      });
+    }]);
 
- /* .run(['$rootScope', '$route','$cookieStore','$location', 'authProvider', function ($rootScope,$route,$cookieStore,$location,authProvider) {
-    $rootScope.$on('$routeChangeStart', function (event) {
 
-      $rootScope.globals = $cookieStore.get('globals') || {};
-      console.log($rootScope.globals)
-      if (!$rootScope.authentication) {
-        console.log('LOC: ' + $location.url());
-        console.log('DENY : Redirecting to Login');
-        $location.path('/login');
-      }
-      else {
-        console.log('ALLOW');
-      }
-    });
-  }])*/
-
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/home.html',
-        controller: 'AuthorizationController',
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'AuthorizationController',
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .when('/currentBills', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/logout', {
-        controller: 'AuthCtrl',
-        redirectTo: '/'
-      })
-      .when('/register', {
-        templateUrl: 'views/register.html',
-        controller: 'RegisterController',
-      })
-      .otherwise({
-        redirectTo: '/'
-      })
-  });
-
+})();
 
