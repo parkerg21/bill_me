@@ -15,6 +15,7 @@
     factory.login = login;
     factory.logoff = logoff;
     factory.register = register;
+    factory.getTemplateBills = getTemplateBills;
 
     function login (token)
     {
@@ -73,6 +74,34 @@
       return deferred.promise;
     };
 
+    function getTemplateBills() {
+      var bills = {
+            bill_1:
+            {
+              billname: 'Electric',
+              amount: 150,
+              dueDates: '01/01/01',
+              paid: 'n'
+            },
+            bill_2:
+            {
+              billname: 'Rent/Mortgage',
+              amount: 1000,
+              dueDates: '01/01/01',
+              paid: 'n'
+            },
+            bill_3:
+            {
+              billname: 'Water',
+              amount: 50,
+              dueDates: '01/01/01',
+              paid: 'n'
+            }
+
+      };
+      return bills;
+    };
+
 
     function validate(token)
     {
@@ -83,7 +112,7 @@
     {
       var deferred = $q.defer();
       var credentials = {email: registration.email, password: registration.password};
-      console.log("Registration: " + registration)
+      console.log("Registration entered for: " + registration.email)
       $firebaseAuth(BaseFactory.AUTH_REF).$createUser(credentials).then(function(auth){
         return auth;
       }, function(error) {
@@ -101,6 +130,7 @@
           user.email = registration.email;
           user.firstName = registration.firstName;
           user.lastName = registration.lastName;
+          user.bills = getTemplateBills();
           deferred.resolve(user.$save());
         }
 

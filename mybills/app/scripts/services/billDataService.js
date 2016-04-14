@@ -3,16 +3,15 @@
 
   angular
     .module('mybillsApp')
-    .factory('AuthorizationService', AuthorizationService);
+    .factory('BillDataService', BillDataService);
 
-  AuthorizationService.$inject = ['$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'BaseFactory'];
+  BillDataService.$inject = ['$q', '$log', '$firebaseAuth', '$firebaseArray', '$firebaseObject', 'BaseFactory'];
 
-  function AuthorizationService($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory)
+  function BillDataService($q, $log, $firebaseAuth, $firebaseArray, $firebaseObject, BaseFactory)
   {
     var factory = angular.extend(BaseFactory, {});
     factory.login = login;
     factory.logout = logout;
-    factory.getUser = getUser;
     factory.isAuth = isAuth
 
     factory.ClearCredentials = function () {
@@ -37,25 +36,17 @@
       return $firebaseAuth(BaseFactory.AUTH_REF).$unauth();
     };
 
-    function isAuth()
-    {
-      var auth = false;
-      if($firebaseAuth(BaseFactory.AUTH_REF).$getAuth())
-      {
-        auth = true;
-      }
-      return auth;
-    };
 
     function getUser() {
       var deferred = $q.defer();
-
       getAuth().then(function(authData) {
         return authData;
       }).then(function(authData) {
         if(authData) {
+          console.log("Found authData for user");
           return $firebaseObject(BaseFactory.USER_REF.child(authData.uid)).$loaded();
         } else {
+          console.log("Did Not Find authData for user");
           return null;
         }
       }).then(function(userData) {

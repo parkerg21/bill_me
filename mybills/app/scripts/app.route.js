@@ -31,7 +31,13 @@
         url:'/currentBills',
         templateUrl: 'views/currentBills.html',
         controller: 'BillController',
-        controllerAs: 'main'
+        resolve :
+        {
+          loggedInUser : function(AuthorizationService)
+          {
+            return AuthorizationService.getUser();
+          }
+        }
       })
     .state('about',
       {
