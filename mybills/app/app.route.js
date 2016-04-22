@@ -12,12 +12,12 @@
 		.state('home',
 		{
       url:'/',
-      templateUrl: 'views/home.html',
+      templateUrl: 'home/home.html'
 		})
 		.state('login',
 		{
       url:'/login',
-      templateUrl: 'views/login.html',
+      templateUrl: 'login/login.html',
       controller: 'LoginController'
 		})
 		.state('register',
@@ -39,13 +39,6 @@
           }
         }
       })
-    .state('about',
-      {
-        url:'/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutController'
-      })
-
 	}]);
 
 })();

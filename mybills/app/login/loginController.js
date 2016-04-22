@@ -5,9 +5,9 @@
     	.module('mybillsApp')
     	.controller('LoginController', LoginController);
 
-    	LoginController.$inject = ['$rootScope','$scope', '$log', '$controller', '$state', '$timeout', 'AuthorizationService'];
+    	LoginController.$inject = ['$rootScope','$scope', '$state', 'AuthorizationService'];
 
-    	function LoginController ($rootScope, $scope, $log, $controller, $state, $timeout, AuthorizationService) {
+    	function LoginController ($rootScope, $scope, $state, AuthorizationService) {
           $scope.token = {username:"",password:""};
           $scope.login = login;
           $scope.logout = logout;
@@ -23,7 +23,7 @@
             console.log("Error display: " + error);
             $scope.error = error;
           });
-        };
+        }
 
          function logout(){
            AuthorizationService.logout();
@@ -31,5 +31,5 @@
            console.log("Logout successful");
            $state.go('login');
          }
-      };
+      }
 })();

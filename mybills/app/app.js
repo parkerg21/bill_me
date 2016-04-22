@@ -1,7 +1,7 @@
 (function() {
   'use strict';
-  angular
-    .module('mybillsApp', ['ui.router', 'ngAnimate','ngCookies','ngResource','ngSanitize','ngTouch', 'firebase'])
+
+  angular.module('mybillsApp', ['ui.router', 'ngAnimate','ngCookies','ngResource','ngSanitize','ngTouch', 'firebase'])
 
     .run(["$rootScope", "$location","AuthorizationService", function($rootScope, $location,AuthorizationService) {
       $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
